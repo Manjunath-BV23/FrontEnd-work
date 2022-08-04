@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #display {
+            width:60%;
+            margin: auto;
+            margin-top: 100px;
+        }
+        img {
+            width:100%;
+            height:100%
+        }
+        p{
+            text-align: end;
+        }
+    </style>
+
+</head>
+<body>
+    <select name="Select Food" id="food">
+        <option value="">Select Food</option>
+        <option value="Dal Makhani">Dal Makhani</option>
+        <option value="Muglai Lababdaar Chicken">Muglai Lababdaar Chicken</option>
+        <option value="spicy curry rice">spicy curry rice</option>
+        <option value="Vegetable biriyani with Raitha">Vegetable biriyani with Raitha</option>
+        <option value="Cream soup of mushrooms">Cream soup of mushrooms</option>
+        <option value="Asparagus quiche">Asparagus quiche</option>
+    </select>
+    <button onclick="order()">Order Food</button>
+    <div id = "display">
+        <p id = "orderId"></p>
+        <img id = "pic">
+    </div>
+</body>
+</html>
+<script>
+    let food = [
+        {
+            name:"Dal Makhani",
+            img:"https://image.shutterstock.com/image-photo/dal-makhani-daal-makhni-popular-600w-419218903.jpg",
+            id:419218903,
+        },
+        {
+            name:"Muglai Lababdaar Chicken",
+            img:"https://image.shutterstock.com/image-photo/muglai-lababdaar-chicken-indian-curry-600w-1513610633.jpg",
+            price: 299,
+            id:1513610633
+        },
+        {
+            name:"spicy curry rice",
+            img:"https://image.shutterstock.com/image-photo/indian-food-spicy-curry-rice-600w-1442496032.jpg",
+            price: 299,
+            id:1442496032
+        },
+        {
+            name:"Vegetable biriyani with Raitha",
+            img:"https://image.shutterstock.com/image-photo/vegetable-biriyani-raitha-sweet-egg-600w-1585411321.jpg",
+            price: 299,
+            id:1585411321
+        },
+        {
+            name:"Cream soup of mushrooms",
+            img:"https://image.shutterstock.com/image-photo/cream-soup-mushrooms-600w-1326984665.jpg",
+            price: 299,
+            id:1326984665
+        },
+        {
+            name:"Asparagus quiche",
+            img:"https://image.shutterstock.com/image-photo/asparagus-quiche-cocked-ham-herbs-600w-309541178.jpg",
+            price: 299,
+            id:309541178
+        }
+    ]
+
+    console.log(food)
+
+    function order(){
+        let selected = document.getElementById("food").value;
+
+        let pic = document.getElementById("pic")
+        let id = document.getElementById("orderId")
+        
+        let promise = new Promise(function (resolve, reject) {
+            setInterval(function () {
+                for(var i = 0; i< food.length; i++){
+                    if(selected == food[i].name){
+                        resolve(food[i])
+                    }
+                }
+            }, 5000)
+        });
+
+        promise.then(function (res){
+            pic.src = res.img
+            id.textContent = `Item ID: ${res.id}`
+        })
+    }
+
+
+</script>

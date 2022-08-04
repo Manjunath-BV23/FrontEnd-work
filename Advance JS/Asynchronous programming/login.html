@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar {
+            border: 1px solid red;
+        }
+        #list li{
+            display: inline;
+            margin-right: 2%;
+        }
+        a{
+            text-decoration:none ;
+            color:indianred;
+        }
+        #options {
+            width:20%;
+            
+            margin: auto;
+            margin-right: 10px;
+        }
+        a {
+            margin-right: 20px;
+        }
+        #myForm {
+            display: grid;
+        }
+        input, button {
+            width:20%;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div id = "navbar">
+            <div id = "options">
+                <ul id = "list">
+                    <a href="./home.html"><li>Home</li></a>
+                    <a href="./login.html"><li>Login</li></a>
+                    <a href="./signup.html"><li>Signup</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id = "myForm">
+        <h2>Sign In</h2>
+        
+        <input type="email" id = "email" placeholder="Email">
+        <input type="password" id = "password" placeholder="Password">
+        <button id = "btn" onclick="signIn()">Sign In</button>
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById("btn").addEventListener("onclick", signIn)
+
+    var userSignedData = JSON.parse(localStorage.getItem("signedUsers"))
+
+    function signIn(){
+        var email = document.getElementById("email").value
+        var password = document.getElementById("password").value
+
+        var count = 0;
+        
+        for(var i = 0; i<userSignedData.length; i++){
+            console.log(userSignedData[i].email,userSignedData[i].password)
+            if(email == userSignedData[i].email && password == userSignedData[i].password){
+                
+                window.location.href = "./home.html"
+                count++
+            }
+            
+        }
+        if(count == 0){
+            alert("Invalid Credentials")
+        }
+        
+
+    }
+</script>

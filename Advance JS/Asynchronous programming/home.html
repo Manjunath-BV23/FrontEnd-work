@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar {
+            border: 1px solid red;
+        }
+        #list li{
+            display: inline;
+            margin-right: 2%;
+        }
+        a{
+            text-decoration:none ;
+            color:indianred;
+        }
+        #options {
+            width:20%;
+            
+            margin: auto;
+            margin-right: 10px;
+        }
+        a {
+            margin-right: 20px;
+        }
+        #main {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            padding:100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div id = "navbar">
+            <div id = "options">
+                <ul id = "list">
+                    <a href="./home.html"><li>Home</li></a>
+                    <a href="./login.html"><li>Login</li></a>
+                    <a href="./signup.html"><li>Signup</li></a>
+                </ul>
+            </div>
+        </div>
+        <button id = "low" onclick = "sortToHigh()">Low to High</button>
+        <button id = "high" onclick = "sortToLow()">High to Low</button>
+        
+        <div id = "main">
+
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+
+    let movies_div = document.getElementById("main")
+
+    let moviesdata = JSON.parse(localStorage.getItem("moviesdata"))
+    console.log(moviesdata[0]);
+
+    let movies = moviesdata[0];
+    function appendItems(movies){
+        movies.forEach(function (element){
+
+        let div = document.createElement("div")
+
+        let p = document.createElement("p");
+        p.innerHTML = `Title: ${element.Title}`
+
+        let year = document.createElement("p")
+        year.innerHTML = `Year: ${element.Year}`
+
+        let img = document.createElement("img");
+        img.src = element.Poster
+
+        let imbd = document.createElement("h3");
+        imbd.innerHTML = `IMDB ID: ${element.imdbID}`
+
+        div.append(p, year,img, imbd)
+        movies_div.append(div)
+            
+        })
+    }
+    
+    appendItems(movies)
+    
+
+    function sortToHigh(){
+        movies_div.innerHTML = ''
+
+        movies = movies.sort(function (a,b) {
+            if(a.imdbID > b.imdbID) return 1;
+            if(a.imdbID < b.imdbID) return -1;
+            return 0
+        })
+
+        appendItems(movies)
+    }
+
+    function sortToLow(){
+        movies_div.innerHTML = ''
+
+        movies = movies.sort(function (a,b) {
+            if(a.imdbID < b.imdbID) return 1;
+            if(a.imdbID > b.imdbID) return -1;
+            return 0
+        })
+
+        appendItems(movies)
+    }
+
+
+</script>

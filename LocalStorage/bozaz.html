@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: flex;
+        }
+        #left {
+            width:40%;
+            padding: 10px 60px;
+        }
+        button {
+            background-color:blue;
+            color:white;
+            margin-top: 30px;
+            padding:10px 20px;
+        }
+        td, th, button {
+            border: 1px solid black;
+            padding: 10px 20px;
+        }
+        h1 {
+            color:blue
+        }
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div id = "left">
+            <h1>Add Product</h1>
+            <form>
+                <label >Category </label>
+                <br>
+                <select id ="category">
+                    <option value="Electonics">Electonics</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Home Appliance">Home Appliance</option>
+                    <option value="Books">Books</option>
+                    
+                </select>
+                <br>
+                <label >Title</label>
+                <br>
+                <input id = "title" type="text">
+                <br>
+                <label >Description</label>
+                <br>
+                <textarea name="" id="descri" cols="30" rows="10"></textarea>
+                <br>
+                <label >Price</label>
+                <br>
+                <input id = "price" type="number">
+                <br>
+                <button>Add</button>
+            </form>
+        </div>
+        <div id = "right">
+            <h1>Product Info</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Desccription</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    document.querySelector("button").addEventListener("click", addItem);
+   var arr = JSON.parse(localStorage.getItem("bozaz")) || [];
+   displayTable(arr);
+ 
+   function addItem(event) {
+ 
+     event.preventDefault();
+ 
+     var category = document.querySelector("#category").value;
+     var title = document.querySelector("#title").value;
+     var description = document.querySelector("#descri").value;
+     var price  = document.querySelector("#price").value;
+ 
+     var todoObj = {
+       category: category,
+       title: title,
+       description:description,
+       price:price
+     };
+     arr.push(todoObj);
+     localStorage.setItem("bozaz", JSON.stringify(arr));
+ 
+     displayTable(arr);
+   }
+ 
+   function displayTable(arr) {
+     document.querySelector("tbody").innerHTML = "";
+     arr.map(function (elem,index) {
+       var row = document.createElement("tr");
+ 
+       var td1 = document.createElement("td");
+       td1.textContent = index+1;
+ 
+       var td2 = document.createElement("td");
+       td2.textContent = elem.category;
+
+       var td3 = document.createElement("td");
+       td3.textContent = elem.title;
+ 
+       var td4 = document.createElement("td");
+       td4.textContent = elem.description;
+
+       var td5 = document.createElement("td");
+       td5.textContent = elem.price;
+ 
+    //    let fire = document.createElement('button')
+    //    fire.textContent = 'Delete';
+ 
+    //    fire.addEventListener('click', function () {
+    //      // localStorage.removeItem(arr[idx])
+ 
+    //      deleteTask(index)
+    //    })
+ 
+       row.append(td1, td2, td3, td4, td5);
+ 
+       document.querySelector("tbody").append(row);
+     });
+   }
+ 
+//    function deleteTask(index){
+//      arr.splice(index,1);
+//      localStorage.setItem("todoList", JSON.stringify(arr));
+//      displayTable(arr);
+//    }
+     
+ </script>

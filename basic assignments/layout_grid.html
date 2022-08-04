@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            justify-content: center;
+        }
+        .first {
+            display:grid;
+            grid-template-columns: repeat(4, 180px);
+            grid-template-rows: repeat(2, 100px);
+            grid-gap:20px;
+            justify-content: center;
+            padding-bottom: 50px;
+            font-size: 30px;
+            color:white
+        }
+        .first > div {
+            border-radius: 10px;
+            background-color: rgb(26, 26, 27);
+            padding: 20px;
+        }
+        .first > #a {
+            grid-area:1/1/2/3;
+        }
+        .first > #b {
+            grid-area:1/3/3/4;
+        }
+        .first > #e {
+            grid-area:1/4/3/5;
+        }
+        .second {
+            display:grid;
+            grid-template-columns: repeat(4, 180px);
+            grid-template-rows: repeat(3, 100px);
+            grid-gap:20px;
+            justify-content: center;
+            font-size: 30px;
+            color:white
+        }
+        .second > div {
+            border-radius: 10px;
+            background-color: rgb(26, 26, 27);
+            padding: 20px;
+        }
+        .second > #a {
+            grid-area: 1/1/2/3;
+        }
+        .second > #b {
+            grid-area: 1/3/2/-1;
+        }
+        .second > #d {
+            grid-area: 2/2/3/-1;
+        }
+        .second > #e {
+            grid-area: 3/1/4/-1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class = "first">
+            <div id = "a">A</div>
+            <div id = "b">B</div>
+            <div id = "c">C</div>
+            <div id = "d">D</div>
+            <div id = "e">E</div>
+            
+        </div>
+        <div class = "second">
+            <div id = "a">A</div>
+            <div id = "b">B</div>
+            <div>C</div>
+            <div id = "d">D</div>
+            <div id = "e">E</div>
+        </div>
+    </div>
+</body>
+</html>

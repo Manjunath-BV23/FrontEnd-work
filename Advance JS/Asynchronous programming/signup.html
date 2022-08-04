@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar {
+            border: 1px solid red;
+        }
+        #list li{
+            display: inline;
+            margin-right: 2%;
+        }
+        a{
+            text-decoration:none ;
+            color:indianred;
+        }
+        #options {
+            width:20%;
+            
+            margin: auto;
+            margin-right: 10px;
+        }
+        a {
+            margin-right: 20px;
+        }
+        #myForm {
+            display: grid;
+        }
+        input, button {
+            width:20%;
+            padding: 5px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div id = "navbar">
+            <div id = "options">
+                <ul id = "list">
+                    <a href="./home.html"><li>Home</li></a>
+                    <a href="./login.html"><li>Login</li></a>
+                    <a href="./signup.html"><li>Signup</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id = "myForm">
+        <h2>Sign Up</h2>
+        <input type="text" id = "name" placeholder="Name">
+        <input type="number" id = "mobile" placeholder="Contact No">
+        <input type="email" id = "email" placeholder="Email">
+        <input type="password" id = "password" placeholder="Password">
+        <button id = "btn" onclick="signUp()">Sign Up</button>
+    </div>
+</body>
+</html>
+<script>
+    document.getElementById("btn").addEventListener("onclick", signUp)
+
+    var userSignedData = JSON.parse(localStorage.getItem("signedUsers")) || []
+
+    function signUp(){
+        var name = document.getElementById("name").value
+        var number = document.getElementById("mobile").value
+        var email = document.getElementById("email").value
+        var password = document.getElementById("password").value
+        
+        if( name != "" && number != "" && email != "" && password != ""){
+            
+            var obj = {
+                name: name,
+                number: number,
+                email: email,
+                password: password,
+            }
+            
+            userSignedData.push(obj);
+            
+            localStorage.setItem("signedUsers", JSON.stringify(userSignedData))
+
+            window.location.href = "./login.html"
+
+        }
+        
+
+    }
+</script>

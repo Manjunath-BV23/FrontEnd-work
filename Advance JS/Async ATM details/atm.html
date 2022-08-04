@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="getDetails(event)">
+    <input id = "name" type="text" placeholder="Name" >
+    <input id = "number" type="number" placeholder="Card Number">
+    <input id = "cvv" type="number" placeholder="CVV">
+    <input type="submit">
+</form>
+</body>
+</html>
+<script>
+    function getDetails(e){
+        e.preventDefault();
+
+        let payment = {
+            name: document.getElementById("name").value,
+            number: document.getElementById("number").value,
+            cvv: document.getElementById("cvv").value,
+
+        };
+        //console.log(payment)
+        setTimeout(function (){
+            alert(`Payment successful for ${payment.name}`)
+        }, 3000);
+    }
+</script>

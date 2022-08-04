@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "product": "kitkat"
+    },
+    {
+      "id": "53",
+      "name": "nike",
+      "price": "1999"
+    },
+    {
+      "id": "2",
+      "name": "spots",
+      "price": "599"
+    },
+    {
+      "id": "3",
+      "name": "puma",
+      "price": "899"
+    }
+  ]
+}

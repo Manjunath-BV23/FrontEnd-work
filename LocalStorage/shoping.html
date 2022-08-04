@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <style>
+        td, th, button {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <form id="myForm">
+        <label >Name</label>
+        <br>
+        <input id="name"  type="text" placeholder="enter ToDo">
+        <br>
+        <label >Quantity</label>
+        <input id ="qty" type="number" >
+        
+        <input type="submit" value = "Submit">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
+
+<script>
+   document.querySelector("#myForm").addEventListener("submit", addItem);
+  var arr = JSON.parse(localStorage.getItem("todoList")) || [];
+  displayTable(arr);
+
+  function addItem(event) {
+
+    event.preventDefault();
+
+    var name = document.querySelector("#name").value;
+    var qty = document.querySelector("#qty").value;
+
+    var todoObj = {
+      itemName: name,
+      itemQty: qty
+    };
+    arr.push(todoObj);
+    localStorage.setItem("todoList", JSON.stringify(arr));
+
+    displayTable(arr);
+  }
+
+  function displayTable(arr) {
+    document.querySelector("tbody").innerHTML = "";
+    arr.map(function (elem,index) {
+      var row = document.createElement("tr");
+
+      var td1 = document.createElement("td");
+      td1.textContent = elem.itemName;
+
+      var td2 = document.createElement("td");
+      td2.textContent = elem.itemQty;
+
+      let fire = document.createElement('button')
+      fire.textContent = 'Delete';
+
+      fire.addEventListener('click', function () {
+        // localStorage.removeItem(arr[idx])
+
+        deleteTask(index)
+      })
+
+      row.append(td1, td2, fire);
+
+      document.querySelector("tbody").append(row);
+    });
+  }
+
+  function deleteTask(index){
+    arr.splice(index,1);
+    localStorage.setItem("todoList", JSON.stringify(arr));
+    displayTable(arr);
+  }
+    
+</script>

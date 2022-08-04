@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1</title>
+</head>
+<body>
+    <input type="text" id = "name">
+    <button id = "submit">Submit</button>
+    <div id = "container"></div>
+</body>
+</html>
+
+<script>
+
+    document.getElementById("submit").addEventListener("click", getData)
+
+
+    // function getData() {
+        
+    //     let data = new Show()
+    //     console.log(data);
+
+    // }
+
+    let main = document.getElementById("container")
+
+    function Show(){
+
+        let x = document.getElementById("name").value;
+        this.name = x,
+        this.date = new Date(),
+        this.status = false
+
+    }
+
+    function getData() {
+
+        let data = new Show()
+        console.log(data)
+
+        let name = document.createElement("h2");
+        name.innerHTML = ` Name: ${data.name}`;
+
+        let date = document.createElement("h2");
+        date.innerHTML = `Date: ${data.date}`;
+
+        let status = document.createElement("h2");
+        status.innerHTML = `Status: ${data.status}`;
+
+        main.append(name, date, status)
+    }
+
+
+</script>

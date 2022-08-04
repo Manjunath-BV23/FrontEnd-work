@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display : grid;
+            width:80%;
+            grid-template-rows: repeat(3, 200px);
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            padding: 50px;
+            margin: auto;
+            text-align: center;
+        }
+        
+        .container > div:nth-child(1) {
+            grid-area: 1/1/2/-1;
+            padding:5px 35%;
+            color:rgb(9, 2, 66);
+            
+        }
+        #content1 {
+            grid-area: 2/1/-1/2;
+        }
+        #content2 {
+            grid-area: 2/2/-1/3;
+        }
+        #content3 {
+            grid-area: 2/3/-1/-1;
+        }
+        div>h2 {
+            color:rgb(8, 2, 68)
+        }
+        #content1 > div > h1 {
+            color:teal
+        }
+        #content2 > div > h1 {
+            color:chocolate
+        }
+        #content3 > div > h1 {
+            color:rgb(7, 121, 167)
+        }
+        button:hover {
+            background-color: blue;
+            color:white;
+        }
+        button {
+            border: 1px solid rgb(48, 114, 238);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Coose a plan that right for your business</h1>
+            <p>We collect reviews from our user so you can get an honest opinion of what an experience with our website are really like!</p>
+        </div>
+        <div id = "content1">
+            <div>
+                <h2>Starter Plan</h2>
+                <h1>Free</h1>
+                <p>Per month</p>
+            </div>
+            <div>
+                <p>
+                    We collect reviews from our user so you can get an honest opinion of what an experience with our website  
+                </p>
+                <button>Start Now</button>
+            </div>
+        </div>
+        <div id = "content2">
+            <div>
+                <h2>Business Plan</h2>
+                <h1>$39.00</h1>
+                <p>Per month</p>
+            </div>
+            <div>
+                <p>We collect reviews from our user so you can get an honest opinion of what an experience with our website</p>
+                <button>Start Now</button>
+            </div>
+        </div>
+        <div id = "content3">
+            <div>
+                <h2>Premium Plan</h2>
+                <h1>$59.00</h1>
+                <p>Per month</p>
+            </div>
+            <div>
+                <p>We collect reviews from our user so you can get an honest opinion of what an experience with our website</p>
+                <button>Start Now</button>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

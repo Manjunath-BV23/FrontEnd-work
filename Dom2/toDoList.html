@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td, th {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ToDo List</h1>
+    <form id="myForm">
+        <label >Name</label>
+        <input id="name"  type="text" placeholder="enter ToDo">
+        <label >Quantity</label>
+        <input id ="qty" type="number" >
+        <label >Priority</label>
+        <input id ="priority" type="text" >
+        <input type="submit" value = "Submit">
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
+
+<script>
+    document.querySelector("#myForm").addEventListener("submit", addItem);
+
+    function addItem(event){
+        event.preventDefault();
+
+        var name = document.querySelector("#name").value;
+        var qty = document.querySelector("#qty").value;
+        var priority = document.querySelector("#priority").value;
+
+        var row = document.createElement("tr")
+
+
+        var td1 = document.createElement("td")
+        td1.textContent = name;
+
+        var td2 = document.createElement("td");
+        td2.textContent = qty;
+
+        var td3 = document.createElement("td");
+        td3.textContent = priority;
+        if(priority == "high"){
+            td3.style.backgroundColor = "red";
+        }
+
+        var td4 = document.createElement("button");
+        td4.textContent = "Delete";
+        td4.addEventListener("click", deleteTask);
+
+        row.append(td1,td2,td3,td4)
+        document.querySelector("tbody").append(row)
+    }
+
+    function deleteTask(event){
+        event.target.parentNode.remove();
+    }
+</script>

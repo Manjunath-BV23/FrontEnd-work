@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        th, td{
+            border: 1px solid black;
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kalro Tickets</h1>
+    <form id = "myForm">
+        <label >Ticket Category</label>
+        <select id="category" >
+            <option >refund</option>
+            <option >item missing</option>
+            <option >order status</option>
+            <option >delivery</option>
+            <option >feedback</option>
+        </select>
+        <label >Ticket body</label>
+        <input id = "tBody" type="area">
+        <label >Date stamp</label>
+        <input id="date" type="date">
+        <label >Ticket Number</label>
+        <select id="tNumber" type="number">
+            <option >1</option>
+            <option >2</option>
+            <option >3</option>
+            <option >4</option>
+            <option >5</option>
+            <option >6</option>
+            <option >7</option>
+            <option >8</option>
+            <option >9</option>
+            <option >10</option>
+        </select>
+
+        <input type="submit">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ticket Category</th>
+                <th>Ticket body</th>
+                <th>Date stamp</th>
+                <th>Ticket Number</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <button id = "filtCate">Filter By Category</button>
+    <h3>Sort By ticket Number</h3>
+    <button id = highToLow>high to low</button>
+    <button id = lowToHigh>low to high</button>
+
+    
+</body>
+</html>
+
+<script>
+    document.querySelector("#myForm").addEventListener("submit", addItem);
+    var arr = JSON.parse(localStorage.getItem("karlo")) || []
+    function addItem(event){
+        event.preventDefault();
+
+        var cate = document.querySelector("#category").value;
+        var body = document.querySelector("#tBody").value;
+        var date = document.querySelector("#date").value;
+        var tNumber = document.querySelector("#tNumber").value;
+
+        var dataObj = {
+            category: cate,
+            body: body,
+            date:date,
+            number: tNumber
+        }
+        arr.push(dataObj)
+
+        localStorage.setItem("karlo", JSON.stringify(arr));
+        
+        displayTable(arr);
+
+    }
+
+    function displayTable(arr){
+        document.querySelector("tbody").innerHTML = "";
+        arr.map(function(elem,index){
+            var row = document.createElement("tr");
+
+            var td1 = document.createElement("td");
+            td1.textContent = elem.category;
+
+            var td2 = document.createElement("td");
+            td2.textContent = elem.body;
+
+            var td3 = document.createElement("td");
+            td3.textContent = elem.date;
+
+            var td4 = document.createElement("td");
+            td4.textContent = elem.number;
+
+            row.append(td1,td2,td3,td4);
+
+            document.querySelector("tbody").append(row)
+
+        })
+    }
+    
+    var data = JSON.parse(localStorage.getItem("karlo"));
+
+    var cateFilt = data.sort(function(a,b){
+        return a.category-b.category;
+    })
+
+    function categoryFilt(){
+        console.log(cateFilt)
+    }
+
+    var lowTOhigh = data.sort(function(a,b){
+        return a.number-b.number;
+    })
+
+    function filterLow(){
+        console.log(lowToHigh)
+    }
+
+    var highTOLow = data.sort(function(a,b){
+        return b.number-a.number;
+    })
+
+    function filterHigh(){
+        console.log(highToLow)
+    }
+
+    document.querySelector("#lowToHigh").addEventListener("click", filterLow);
+    document.querySelector("highToLow").addEventListener("click", filterHigh);
+    document.querySelector("#filtCate").addEventListener("click", categoryFilt)
+
+    
+</script>

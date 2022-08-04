@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+        #corner{
+            justify-content: space-between;
+            width:40%;
+            text-align:end;
+            margin-left: 60%;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1>Cart page</h1>
+    <div id="corner">
+        <button id = "totalItems"></button>
+        <button id = "totalPrice"></button>
+    </div>
+    <input id = "promoCode" type="text" placeholder="Enter Promo code">
+    <button id = "apply" >Apply Promo</button>
+    <div id = "container">
+
+    </div>
+    <button id = "out">Check Out</button>
+</body>
+</html>
+
+<script>
+    var cartData = JSON.parse(localStorage.getItem("cartItems"));
+    let rigth = document.getElementById('corner')
+    
+    var totalPrice = 0;
+
+    cartData.map(function(elem){
+        var div = document.createElement("div")
+        var image = document.createElement("img");
+        image.setAttribute("src", elem.image);
+
+        var name = document.createElement("h2");
+        name.textContent = elem.name;
+
+        var price = document.createElement("h4");
+        price.textContent = elem.price
+
+        totalPrice += Number(elem.price)
+
+        div.append(image,name,price)
+        document.querySelector("#container").append(div)
+        //console.log(elem)
+
+    })
+
+    document.querySelector("#apply").addEventListener("click", promoFunc)
+    
+    function promoFunc(){
+        var x = document.querySelector("#promoCode").value;
+        if(x == "masai30"){
+            totalPrice = totalPrice*0.3;
+        }
+        
+        document.querySelector("#totalPrice").textContent ="Total Price: "+ totalPrice;
+
+    }
+
+    document.querySelector("#totalItems").textContent = "Total Items: "+cartData.length;
+    document.querySelector("#totalPrice").textContent ="Total Price: "+ totalPrice;
+
+    document.querySelector("#out").addEventListener("click", function(){
+        window.location.href = "success.html"
+    })
+   
+
+    
+
+</script>

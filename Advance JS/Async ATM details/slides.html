@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navbar {
+            border: 1px solid red;
+        }
+        #list li{
+            display: inline;
+            margin-right: 2%;
+        }
+        a{
+            text-decoration:none ;
+            color:indianred;
+        }
+        #options {
+            width:20%;
+            
+            margin: auto;
+            margin-right: 10px;
+        }
+        a {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id = "container">
+        <div id = "navbar">
+            <div id = "options">
+                <ul id = "list">
+                    <a href="./home.html"><li>Home</li></a>
+                    <a href="./login.html"><li>Login</li></a>
+                    <a href="./signup.html"><li>Signup</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <button onclick="Start()">Start</button>
+    <button onclick="Stop()">Stop</button>
+    <div id = "slides"></div>
+</body>
+</html>
+<script>
+    let id;
+    //function Start(){
+
+        let div = document.getElementById("slides");
+        div.innerHTML = null;
+
+        let images = JSON.parse(localStorage.getItem("images"));
+
+        let img = document.createElement('img');
+
+        img.src = images[0];
+
+        div.append(img)
+
+
+
+        let i = 1
+
+        id = setInterval(function() {
+            if(i === images.length){
+                i = 0;
+            }
+
+            img.src = images[i]
+            console.log(i)
+            i++
+        }, 1000);
+
+        div.append(img)
+    //}
+    function Stop(){
+        clearInterval(id)
+    }
+</script>

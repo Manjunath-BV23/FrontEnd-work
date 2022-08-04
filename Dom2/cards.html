@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body>div {
+            display:flex;
+            justify-content: center;
+        }
+        div>div {
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    var data = [
+    {
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi1.jpg.pagespeed.ic.mkSk-Af1ka.webp",
+        name:"LATEST MEN’S SNEAKER",
+        price:"$25.00",
+        strikedOffPrice:"$95.00"
+    },{
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi2.jpg.pagespeed.ic.uBrpABaJqp.webp",
+        name:"LATEST MEN’S SNEAKER",
+        price:"$35.00",
+        strikedOffPrice:"$100.00"
+    },{
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi3.jpg.pagespeed.ic.iO_cFEPy2K.webp",
+        name:"LATEST MEN’S SNEAKER",
+        price:"$35.00",
+        strikedOffPrice:"$100.00"
+    },
+    {
+        imgUrl:"https://preview.colorlib.com/theme/eiser/img/product/inspired-product/xi4.jpg.pagespeed.ic.kmiQW8I5wx.webp",
+        name:"LATEST MEN’S SNEAKER",
+        price:"$35.00",
+        strikedOffPrice:"$100.00"
+    }
+ ]
+     
+      var div = document.createElement("div");
+      data.map(function(elem){
+          var subDiv = document.createElement("div");
+          var image = document.createElement("img");
+          var nameOfItem = document.createElement("h3");
+          var rate = document.createElement("h2");
+          var strike = document.createElement("h4")
+
+          image.setAttribute("src", elem.imgUrl)
+          nameOfItem.textContent = elem.name;
+          rate.textContent = elem.price;
+          strike.textContent = elem.strikedOffPrice;
+
+          subDiv.append(image,nameOfItem,rate,strike);
+
+          div.append(subDiv)
+      });
+
+      var body = document.querySelector("body")
+
+      body.append(div)
+</script>

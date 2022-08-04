@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            padding: 10px 20px ;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <button onclick = "objects()">Objects</button>
+    <button onclick = "arrays()">Arrays</button>
+    <button onclick = "functions()">Functions</button>
+    <button onclick = "strings()">Strings</button>
+    <button onclick = "numbers()">Numbers</button>
+    <button onclick = "nullFunc()">null</button>
+    <button onclick = "undefinedFunc()">Undefined</button>
+    <br>
+    <div id = "content"></div>
+
+</body>
+</html>
+<script>
+    let main = document.getElementById('content')
+    // main.style.backgroundColor = "green"
+    main.style.margin = "auto";
+    
+    
+
+    function objects(){
+        main.textContent = "";
+        let div = document.createElement('div')
+        div.innerHTML = 
+        `<li>Booleans can be objects (if defined with the new keyword)</li>
+        <li>Numbers can be objects (if defined with the new keyword)</li>
+        <li>Strings can be objects (if defined with the new keyword)</li>
+        <li> Dates are always objects</li>
+        <li>Maths are always objects</li>
+        <li>Arrays, Functions, Objects are always objects</li>
+
+        `
+        main.append(div)
+    }
+    function arrays(){
+        main.textContent = "";
+
+        let div = document.createElement('div')
+        div.innerHTML = 
+        `<li>In JavaScript, an array is an ordered list of values.</li>
+        <li>Each value is called an element specified by an index.</li>
+        <li>First, an array can hold values of different types</li>
+        <li>you can have an array that stores the number and string, and boolean values.</li>
+        <li>Second, the length of an array is dynamically sized and auto-growing.</li>
+        
+        `
+        main.append(div)
+    }  
+    function functions(){
+        main.textContent = "";
+        let div = document.createElement('div')
+        div.innerHTML = 
+        `<li>A JavaScript function is a block of code designed to perform a particular task.</li>
+        <li>A JavaScript function is executed when "something" invokes it (calls it).</li>
+        <li>A JavaScript function is defined with the function keyword, followed by a name, followed by parentheses ().</li>
+        <li>Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).</li>
+        <li>The code to be executed, by the function, is placed inside curly brackets: {}</li>
+
+
+        `
+        main.append(div)
+    } 
+    function strings(){
+        main.textContent = "";
+        let div = document.createElement('div')
+        div.innerHTML = 
+        `<li>Primitive values, like "John Doe", cannot have properties or methods</li>
+        <li>The length property returns the length of a string</li>
+        <li>slice() extracts a part of a string and returns the extracted part in a new string.</li>
+        <li>If a parameter is negative, the position is counted from the end of the string.</li>
+        <li>This example slices out a portion of a string from position -12 to position -6:</li>
+        
+
+
+        `
+        main.append(div)
+    }
+    function numbers(){
+        main.textContent = "";
+        let div = document.createElement('div')
+        div.innerHTML = 
+        `<li>Number is a primitive wrapper object used to represent and manipulate numbers like 37 or -9.25.</li>
+        <li>Number may also be expressed in literal forms like 0b101, 0o13, 0x0A.</li>
+        <li>The Number constructor contains constants and methods for working with numbers</li>
+        <li>Values of other types can be converted to numbers using the Number() function.</li>
+        <li>When used as a function, Number(value) converts a string or other value to the Number type</li>
+        
+
+
+        `
+        main.append(div)
+    }
+    function nullFunc(){
+        main.textContent = "";
+        let div = document.createElement('div')
+        div.innerHTML = 
+        `<li>The value null represents the intentional absence of any object value</li>
+        <li>The value null represents the intentional absence of any object value</li>
+        <li>null is not an identifier for a property of the global object, like undefined can be.</li>
+        <li>Instead, null expresses a lack of identification, indicating that a variable points to no object.</li>
+        <li>null is often retrieved in a place where an object can be expected but no object is relevant.</li>
+        
+        `
+        main.append(div)
+    }
+    function undefinedFunc(){
+        main.textContent = "";
+        let div = document.createElement('div')
+        div.innerHTML = 
+        `<li>undefined is a property of the global object</li>
+        <li>That is, it is a variable in global scope</li>
+        <li>The initial value of undefined is the primitive value undefined.</li>
+        <li>The global undefined property represents the primitive value undefined</li>
+        <li>It is one of JavaScript's primitive types.</li>
+        
+        `
+        main.append(div)
+    }
+</script>

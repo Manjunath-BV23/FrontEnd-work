@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="color()">Die</button>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    let die;
+    let main = document.getElementById('container')
+
+    function color(){
+        main.textContent =  ''
+        let num = Math.floor(Math.random()*6+1)
+       
+
+        let h2 = document.createElement('h2')
+        h2.textContent = num
+
+        if(num == 6) h2.style.color = "green" ;
+        else if(num == 1) h2.style.color = "red" ;
+
+        main.append(h2)
+
+    }
+</script>
